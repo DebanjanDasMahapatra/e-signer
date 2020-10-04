@@ -68,7 +68,7 @@ function Home() {
       }
 
       useEffect(()=>{
-        axios.get(baseUrl+'/work/getSigns')
+        axios.get(baseUrl+'/work/getSigns1')
         .then(res => {
           updateSpinner(false);
           if(res.data.status){
@@ -79,6 +79,9 @@ function Home() {
           }
           
           // const persons = res.data;
+        }).catch(err=>{
+          updateSpinner(false);
+          console.log(err);
         })
       },[])
 
