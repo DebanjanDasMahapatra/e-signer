@@ -10,7 +10,7 @@ import { Table } from 'antd';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
-const baseUrl = '';
+const baseUrl = 'http://localhost:80';
 
 const { Header, Content, Footer } = Layout;
 function Home() {
@@ -72,6 +72,9 @@ function Home() {
         .then(res => {
           updateSpinner(false);
           if(res.data.status){
+            res.data.data.forEach(element => {
+              res.data.data["key"]= element._id;
+            });
             updateUsers(res.data.data);
           }
           
@@ -181,7 +184,7 @@ function Home() {
       </Breadcrumb>
       <div className="site-layout-background" style={{ padding: 2, minHeight: 800 }}>
       {spiner?<div className="loader-holder" >
-          <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>:null}
         {flag?
                         
